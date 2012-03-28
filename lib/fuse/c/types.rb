@@ -48,7 +48,7 @@ callback :init, [:pointer], :pointer
 callback :destroy, [:pointer], :void
 callback :access, [:string, :int], :int
 callback :create, [:string, :mode_t, :pointer], :int
-callback :ftruncate, [:strig, :off_t, :pointer], :int
+callback :ftruncate, [:string, :off_t, :pointer], :int
 callback :fgetattr, [:string, :pointer, :pointer], :int
 callback :lock, [:string, :pointer, :int, :pointer], :int
 callback :utimens, [:string, :pointer], :int
@@ -95,7 +95,7 @@ class Operations < FFI::Struct
 		:fgetattr,     :fgetattr,
 		:lock,         :lock,
 		:utimens,      :utimens,
-		:bmap,         :bmp,
+		:bmap,         :bmap,
 		:flags,        :uint,
 		:ioctl,        :ioctl,
 		:poll,         :poll

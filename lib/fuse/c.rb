@@ -21,5 +21,5 @@ end
 
 end
 
-require 'sensors/c/types'
-require 'sensors/c/functions'
+# require 'sensors/c/types'
+# require 'sensors/c/functions'

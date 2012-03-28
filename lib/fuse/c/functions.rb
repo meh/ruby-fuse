@@ -9,16 +9,17 @@
 #++
 
 module Fuse; module C
-
+extend FFI::Library
+ffi_lib '/usr/local/lib/osxfuse/libosxfuse.dylib'
 attach_function :fuse_new, [:pointer, :pointer, :pointer, :size_t, :pointer], :pointer
 attach_function :fuse_destroy, [:pointer], :void
 attach_function :fuse_loop, [:pointer], :int
 attach_function :fuse_exit, [:pointer], :void
 attach_function :fuse_loop_mt, [:pointer], :int
 attach_function :fuse_get_context, [:void], :pointer
-attach_function :fuse_getgroups, [:int, :pointer], :int
+# attach_function :fuse_getgroups, [:int, :pointer], :int
 attach_function :fuse_main_real, [:int, :pointer, :pointer, :size_t, :pointer], :int
-attach_function :fuse_notify_poll, [:pointer], :int
+# attach_function :fuse_notify_poll, [:pointer], :int
 attach_function :fuse_fs_new, [:pointer, :size_t, :pointer], :pointer
 attach_function :fuse_register_module, [:pointer], :void
 
@@ -26,18 +27,19 @@ attach_function :fuse_fs_getattr, [:pointer, :string, :pointer], :int
 attach_function :fuse_fs_fgetattr, [:pointer, :string, :pointer, :pointer], :int
 attach_function :fuse_fs_rename, [:pointer, :string, :string], :int
 attach_function :fuse_fs_unlink, [:pointer, :string], :int
-attach_function :fuse_fs_rmdir, [:pointer, :string]
+attach_function :fuse_fs_rmdir, [:pointer, :string], :int
 attach_function :fuse_fs_symlink, [:pointer, :string, :string], :int
 attach_function :fuse_fs_link, [:pointer, :string, :string], :int
 attach_function :fuse_fs_release, [:pointer, :string, :pointer], :int
 attach_function :fuse_fs_open, [:pointer, :string, :pointer], :int
-attach_function :fuse_fs_read, [:pointer, :string, :out, :size, :off_t, :pointer], :int
-attach_function :fuse_fs_write, [:pointer, :string, :in, :size, :off_t, :pointer], :int
+attach_function :fuse_fs_read, [:pointer, :string, :buffer_out, :size_t, :off_t, :pointer], :int
+attach_function :fuse_fs_write, [:pointer, :string, :buffer_in, :size_t, :off_t, :pointer], :int
 attach_function :fuse_fs_fsync, [:pointer, :string, :int, :pointer], :int
 attach_function :fuse_fs_flush, [:pointer, :string, :pointer], :int
 attach_function :fuse_fs_statfs, [:pointer, :string, :pointer], :int
-attach_function :fuse_fs_opendir, [:pointer, :strig, :pointer], :int
-attach_function :fuse_fs_readdir, [:pointer, :string, :pointer, :fuse_fill_dir_t, :off_t], :int
+attach_function :fuse_fs_opendir, [:pointer, :string, :pointer], :int
+callback :fuse_fill_dir, [:pointer, :pointer, :pointer, :off_t], :int
+attach_function :fuse_fs_readdir, [:pointer, :string, :pointer, :fuse_fill_dir, :off_t], :int
 attach_function :fuse_fs_fsyncdir, [:pointer, :string, :int, :pointer], :int
 attach_function :fuse_fs_releasedir, [:pointer, :string, :pointer], :int
 attach_function :fuse_fs_create, [:pointer, :string, :mode_t, :pointer], :int
@@ -56,8 +58,8 @@ attach_function :fuse_fs_getxattr, [:pointer, :string, :string, :pointer, :size_
 attach_function :fuse_fs_listxattr, [:pointer, :string, :pointer, :size_t], :int
 attach_function :fuse_fs_removexattr, [:pointer, :string, :string], :int
 attach_function :fuse_fs_bmap, [:pointer, :string, :size_t, :pointer], :int
-attach_function :fuse_fs_ioctl, [:pointer, :string, :int, :pointer, :uint, :pointer], :int
-attach_function :fuse_fs_poll, [:pointer, :string, :pointer, :pointer, :pointer], :int
+# attach_function :fuse_fs_ioctl, [:pointer, :string, :int, :pointer, :uint, :pointer], :int
+# attach_function :fuse_fs_poll, [:pointer, :string, :pointer, :pointer, :pointer], :int
 attach_function :fuse_fs_init, [:pointer, :pointer], :void
 attach_function :fuse_fs_destroy, [:pointer], :void
 

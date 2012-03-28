@@ -52,7 +52,7 @@ class Operations
 		link:    true,
 	}
 
-	attr_reader :filesytem
+	attr_reader :filesystem
 	
 	alias fs filesystem
 
