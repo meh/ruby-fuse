@@ -10,17 +10,16 @@
 
 module Fuse
 
-class FileSystem
-	extend Forwardable
+  class FileSystem
+    extend Forwardable
 
-	attr_reader    :operations
-	def_delegators :@operations, *Operations::Callbacks.keys
+    attr_reader    :operations
+    def_delegators :@operations, *Operations::Callbacks.keys
 
-	def initialize (&block)
-		@operations = Operations.new(self)
-
-		instance_eval block
-	end
-end
+    def initialize (&block)
+      @operations = Operations.new(self)
+      instance_eval &block
+    end
+  end
 
 end

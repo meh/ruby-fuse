@@ -63,6 +63,10 @@ class Operations
 		@internal = C::Operations.new
 	end
 
+	def to_ffi
+		@internal.pointer
+	end
+
 	Callbacks.each {|name, factory|
 		define_method name do |*args, &block|
 			if block
