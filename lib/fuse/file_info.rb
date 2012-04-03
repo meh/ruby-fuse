@@ -10,24 +10,25 @@
 
 module Fuse
 
-class FileInfo
-	def initialize (pointer)
-		@internal = pointer.is_a?(C::FileInfo) ? pointer : C::FileInfo.new(pointer)
-	end
+  class FileInfo
+    def initialize (pointer)
+      @internal = pointer.is_a?(C::FileInfo) ? pointer : C::FileInfo.new(pointer)
+    end
 
-	C::FileInfo.layout.members.each {|name|
-		define_method name do
-			@internal[name]
-		end
+    C::FileInfo.layout.members.each {|name|
+      define_method name do
+        @internal[name]
+      end
 
-		define_method "#{name}=" do |value|
-			@internal[name] = value
-		end
-	}
+      define_method "#{name}=" do |value|
+        @internal[name] = value
+      end
+    }
 
-	def to_ffi
-		@internal.pointer
-	end
+    def to_ffi
+      @internal.pointer
+    end
+  end
+
 end
 
-end

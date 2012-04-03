@@ -18,6 +18,8 @@ module Fuse
 
     argv_strings = []
     argv_strings << FFI::MemoryPointer.from_string("fuse.rb")
+    argv_strings << FFI::MemoryPointer.from_string("-f")
+    argv_strings << FFI::MemoryPointer.from_string("-s")
 
     mountpoint = args.shift
     if mountpoint
