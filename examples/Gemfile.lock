@@ -1,0 +1,19 @@
+PATH
+  remote: /Users/misha/Code/ruby-fuse
+  specs:
+    fuse (0.0.1)
+      ffi
+      ffi-extra
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    ffi (1.0.11)
+    ffi-extra (0.0.5)
+      ffi
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  fuse!

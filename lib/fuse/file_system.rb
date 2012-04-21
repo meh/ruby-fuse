@@ -8,6 +8,8 @@
 #  0. You just DO WHAT THE FUCK YOU WANT TO.
 #++
 
+require 'fuse/file_system/operations'
+
 module Fuse
 
   class FileSystem

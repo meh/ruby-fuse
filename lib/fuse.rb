@@ -8,7 +8,11 @@
 #  0. You just DO WHAT THE FUCK YOU WANT TO.
 #++
 
+require 'ffi'
+require 'ffi/extra'
+
 require 'fuse/c'
+require 'fuse/c/functions'
 require 'fuse/arguments'
 require 'fuse/file_system'
 

@@ -9,6 +9,7 @@
 #++
 
 require 'ffi'
+require 'ffi/library'
 require 'ffi/extra'
 
 module Fuse

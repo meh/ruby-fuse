@@ -8,6 +8,8 @@
 #  0. You just DO WHAT THE FUCK YOU WANT TO.
 #++
 
+require 'fuse/c/types'
+
 module Fuse
 
   class Stat

@@ -1,0 +1,3 @@
+source "http://rubygems.org"
+
+gem 'fuse', :path => '/Users/misha/Code/ruby-fuse'
