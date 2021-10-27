@@ -1,4 +1,4 @@
 FUSE bindings for Ruby with FFI
 ===============================
 
-Because I'm bored.
+Because I'm bored and lazy.
